@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Question1 :- Given a string `s`, *find the first non-repeating character in it and return its index*. If it does not exist, return `-1`.
+
+**Example 1:**
+Input: s = "leetcode"
+Output: 0
+ -->
+    <script>
+       function firstNonRepeatingCharacter(s) {
+  const frequencyMap = {};
+  for (let i = 0; i < s.length; i++) {
+    const char = s[i];
+    frequencyMap[char] = (frequencyMap[char] || 0) + 1;
+  }
+  for (let i = 0; i < s.length; i++) {
+    const char = s[i];
+    if (frequencyMap[char] === 1) {
+      return i;
+    }
+  }
+
+  return -1;
+}
+const s = "leetcode";
+document.write(firstNonRepeatingCharacter(s)); // Output: 0
+ 
+    </script>
+</body>
+</html>

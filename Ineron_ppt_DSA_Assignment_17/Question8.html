@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--**Question 8**
+
+For a stream of integers, implement a data structure that checks if the last `k` integers parsed in the stream are **equal** to `value`.
+
+Implement the **DataStream** class:
+
+- `DataStream(int value, int k)` Initializes the object with an empty integer stream and the two integers `value` and `k`.
+- `boolean consec(int num)` Adds `num` to the stream of integers. Returns `true` if the last `k` integers are equal to `value`, and `false` otherwise. If there are less than `k` integers, the condition does not hold true, so returns `false`.
+ Input
+["DataStream", "consec", "consec", "consec", "consec"]
+[[4, 3], [4], [4], [4], [3]]
+Output
+[null, false, false, true, false]-->
+    <script>
+        class DataStream {
+  constructor(value, k) {
+    this.stream = []; 
+    this.value = value;
+    this.k = k;
+  }
+
+  consec(num) {
+    this.stream.push(num);
+    if (this.stream.length < this.k) {
+      return false;
+    }
+    for (let i = this.stream.length - this.k; i < this.stream.length; i++) {
+      if (this.stream[i] !== this.value) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+}
+const ds = new DataStream(4, 3);
+console.log(ds.consec(4));
+console.log(ds.consec(4));
+console.log(ds.consec(4));
+console.log(ds.consec(3));
+
+    </script>
+</body>
+</html>
